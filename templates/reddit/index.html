@@ -5,6 +5,16 @@
     <title></title>
 </head>
 <body>
-<h1>test</h1>
+<h1>Links</h1>
+<table>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.url }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
 </body>
 </html>
