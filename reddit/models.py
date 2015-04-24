@@ -31,3 +31,12 @@ class Post(models.Model):
         return self.title
 
 
+class Comment(models.Model):
+
+    text = models.TextField(max_length=1024, blank=False)
+    pub_datetime = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.ForeignKey(User)
+    votes = models.IntegerField(default=0)
+    downvotes = models.IntegerField(default=0)
+    post = models.ForeignKey(Post, null=True)
+    comment = models.ForeignKey("self", related_name="children_comment", null=True)
