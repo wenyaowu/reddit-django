@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block body %}
+<div class="container">
+<h1>Links</h1>
+<table>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.url }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

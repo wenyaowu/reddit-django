@@ -19,16 +19,19 @@ class Subreddit(models.Model):
 
 class Post(models.Model):
 
-    title = models.CharField(max_length=1024, unique=False)
-    pub_datetime = models.DateTimeField(default=datetime.now, blank=True)
+    title = models.CharField(max_length=256, unique=False)
+    pub_datetime = models.DateTimeField(default=datetime.now)
     user = models.ForeignKey(User)
     url = models.URLField()
     votes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
     subreddit = models.ForeignKey(Subreddit)
+
 
     def __unicode__(self):
         return self.title
+
+    class Meta:
+        ordering = ["-pub_datetime"]
 
 
 class Comment(models.Model):
@@ -37,6 +40,5 @@ class Comment(models.Model):
     pub_datetime = models.DateTimeField(default=datetime.now, blank=True)
     user = models.ForeignKey(User)
     votes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
     post = models.ForeignKey(Post, null=True)
     comment = models.ForeignKey("self", related_name="children_comment", null=True)
