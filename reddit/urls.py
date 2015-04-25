@@ -8,4 +8,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', views.index, name='index'),
+    url(r'^subreddit/(?P<subreddit_slug>[\w\-]+)/$', views.subreddit, name='subreddit'),
+    url(r'^add_post/$', views.add_post, name='add_post'),
+
 )
