@@ -28,18 +28,19 @@ def add_post(request):
     # Check if it's a 'POST' request
     if request.method == 'POST':
         form = PostForm(request.POST)
-
+        user = request.user
         if form.is_valid():
-            obj = form.save(commit=False)
-            obj.user_name = request.user
-            obj.save()
-
+            if user:
+                post = form.save(commit=False)
+                post.user = user
+                post.save()
             # Now call the index() view.
             # The user will be shown the homepage.
-            return redirect('home.html')
+            return redirect('/reddit/')
         else:
             print form.errors
-    else: # Not a post request, just show/render the page
+    else:  # Not a post request, just show/render the page
         form = PostForm()
+    context_dict = {'form': form}
 
-    return render(request, 'reddit/add_post.html', {'form': form})
+    return render(request, 'reddit/add_post.html', context_dict)

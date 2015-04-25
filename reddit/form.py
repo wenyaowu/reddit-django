@@ -6,10 +6,10 @@ from models import Post, Comment, Subreddit
 
 class PostForm(forms.ModelForm):
     title = forms.CharField(max_length=256, help_text='Title')
-    url = forms.URLField(max_length=200, help_text='URL')
+    url = forms.URLField(max_length=200, help_text='URL', initial='http://')
     subreddit = forms.ModelChoiceField(queryset=Subreddit.objects.all())
     votes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    pub_datetime = forms.DateTimeField(widget=forms.HiddenInput(),initial=datetime.now)
+    pub_datetime = forms.DateTimeField(widget=forms.HiddenInput(), initial=datetime.now)
 
     class Meta:  # Things that is not included in the field
         # Provide an association between the ModelForm and a model
