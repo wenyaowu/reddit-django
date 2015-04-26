@@ -10,5 +10,7 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^subreddit/(?P<subreddit_slug>[\w\-]+)/$', views.subreddit, name='subreddit'),
     url(r'^add_post/$', views.add_post, name='add_post'),
+    url(r'^vote_post/$', views.vote_post, name='vote_post'),
+    url(r'^downvote_post/$', views.downvote_post, name='downvote_post'),
 
 )

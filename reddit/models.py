@@ -26,7 +26,6 @@ class Post(models.Model):
     votes = models.IntegerField(default=0)
     subreddit = models.ForeignKey(Subreddit)
 
-
     def __unicode__(self):
         return self.title
 
@@ -40,5 +39,8 @@ class Comment(models.Model):
     pub_datetime = models.DateTimeField(default=datetime.now, blank=True)
     user = models.ForeignKey(User)
     votes = models.IntegerField(default=0)
-    post = models.ForeignKey(Post, null=True)
-    comment = models.ForeignKey("self", related_name="children_comment", null=True)
+    post = models.ForeignKey(Post, null=True, blank=True)
+    comment = models.ForeignKey("self", related_name="children_comment", null=True, blank=True)
+
+    def __unicode__(self):
+        return self.text

@@ -4,16 +4,50 @@
 {% load staticfiles %}
 
 {% block body %}
-<div class="container">
-<h1>Links</h1>
-<table>
-    {% for post in posts %}
-    <tr>
-        <td>{{ post.title }}</td>
-        <td>{{ post.url }}</td>
-    </tr>
-    {% endfor %}
-</table>
-<p><a href="{% url 'add_post' %}">Submit a new link</a></p>
-</div>
+    <div class="container">
+        <h1>Links</h1>
+        <a href="{% url 'add_post' %}">add new links</a>
+
+        <div class="sitetable">
+            {% for post in posts %}
+                <div class="row">
+                    <!---Votes---->
+                    <div class="col-xs-1 col-sm-1">
+                        <ul class="vote text-center">
+                            <li>
+                                <button class="vote" data-postid="{{ post.id }}" type="button">
+                                    <span class="arrow glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                                </button>
+                            </li>
+
+                            <li>
+                                <span class="vote-count" data-postid="{{ post.id }}">{{ post.votes }}</span>
+                            </li>
+
+                            <li>
+                                <button class="downvote" data-postid="{{ post.id }}" type="button">
+                                    <span class="arrow glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <!---Post, info-->
+                    <div class="col-xs-7 col-sm-7 post">
+                        <p class="title">
+                            <a class="title" href="{{ post.url }}">{{ post.title }}</a>
+                        </p>
+
+                        <p class="tagline">
+                            <time>{{ post.pub_datetime }}</time>
+                            by {{ post.user }} to <a href="#">{{ post.subreddit }}</a>
+                        </p>
+                        <p>
+                            {{ post.child_set }} comments
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}
