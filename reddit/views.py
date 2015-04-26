@@ -47,6 +47,44 @@ def add_post(request):
 
     return render(request, 'reddit/add_post.html', context_dict)
 
+
+def post(request, post_slug):
+
+    post = Post.objects.get(slug=post_slug)
+    user = request.user
+
+    form = CommentForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            temp = form.save(commit=False)
+            temp.post = post
+            temp.user = user
+            parent = form['parent'].value()
+            print parent
+            if parent == '':
+                # Set a blank path then save it to get an ID
+                temp.path = []
+                temp.save()
+                temp.path = [temp.id]
+            else:
+                # Get the parent node
+                node = Comment.objects.get(id=parent)
+                temp.depth = node.depth + 1
+                temp.path = node.path
+
+                # Store parents path then apply comment ID
+                temp.save()
+                temp.path.append(temp.id)
+
+            # Final save for parents and children
+            temp.save()
+
+    # Retrieve all comments and sort them by path
+    comment_tree = Comment.objects.filter(post=post).order_by('path')
+
+    return render(request, 'reddit/post.html', locals())
+
+
 @login_required
 def vote_post(request):
 
@@ -78,3 +116,4 @@ def downvote_post(request):
             post.votes = votes
             post.save()
     return HttpResponse(votes)
+

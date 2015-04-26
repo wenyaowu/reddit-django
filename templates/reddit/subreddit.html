@@ -35,12 +35,12 @@
                             <a class="title" href="{{ post.url }}">{{ post.title }}</a>
                         </p>
 
-                        <p class="tagline">
+                        <p id="post-meta">
                             <time>{{ post.pub_datetime }}</time>
-                            by {{ post.user }} to <a href="#">{{ post.subreddit }}</a>
+                            by {{ post.user }} to <a href="{% url 'subreddit' post.subreddit.slug %}">{{ post.subreddit }}</a>
                         </p>
-                        <p>
-                            {{ post.child_set }} comments
+                        <p id="post-meta">
+                            <b><a href="{% url 'post' post.slug %}">{{ post.comment_count }} comments </a></b>
                         </p>
                     </div>
                 </div>

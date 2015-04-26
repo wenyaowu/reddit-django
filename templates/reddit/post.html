@@ -1,15 +1,15 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}
-
 {% load staticfiles %}
+{% load humanize %}
+
+
+{% block head %}
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>Links</h1>
-        <a href="{% url 'add_post' %}">add new links</a>
-
+<!--original post-->
+<div class="contianer">
         <div class="sitetable">
-            {% for post in posts %}
                 <div class="row">
                     <!---Votes---->
                     <div class="col-xs-1 col-sm-1">
@@ -39,15 +39,36 @@
 
                         <p id="post-meta">
                             <time>{{ post.pub_datetime }}</time>
-                            by {{ post.user }} to <a href="{% url 'subreddit' post.subreddit.slug %}">{{ post.subreddit }}</a>
+                            by {{ post.user }} to <a href="#">{{ post.subreddit }}</a>
                         </p>
                         <p id="post-meta">
-                            <b><a href="{% url 'post' post.slug %}">{{ post.comment_count }} comments </a></b>
+                            <b>{{ post.comment_count }} comments</b>
                         </p>
                     </div>
                 </div>
-            {% endfor %}
         </div>
-    </div>
+</div>
+
+<!--comment field-->
+<div class="container">
+<div class="col-xs-8 col-sm-8">
+<form id="postcomment" method="post" action="">
+        {{form.as_p}}
+        <p><input type="submit" value="Submit" /></p>
+        {% csrf_token %}
+    </form>
+    <ul id="commenters">
+    {% for c in comment_tree %}
+        <li id="{{c.id}}" class="comment-list" style="margin-left:{{c.depth|add:c.depth}}em;">
+            <p class="poster" id="post-meta">{{ c.user }}-{{c.pub_datetime|naturaltime}}</p>
+            <p>{{c.text}}</p>
+            <p><a href="" class="reply" id="post-action">reply</a></p>
+        </li>
+    {% empty %}
+        <li>There are currently no comments. You can be first!</li>
+    {% endfor %}
+    </ul>
+</div>
+</div>
 
 {% endblock %}

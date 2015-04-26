@@ -12,5 +12,5 @@ urlpatterns = patterns('',
     url(r'^add_post/$', views.add_post, name='add_post'),
     url(r'^vote_post/$', views.vote_post, name='vote_post'),
     url(r'^downvote_post/$', views.downvote_post, name='downvote_post'),
-
+    url(r'^comment/(?P<post_slug>[\w\-]+)/$', views.post, name='post'),
 )

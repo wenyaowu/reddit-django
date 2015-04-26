@@ -16,3 +16,19 @@
     padding: 0px;
     margin: 0px;
 }
+
+.comment-list{
+    list-style-type: none;
+    background-color: #FAFAFA;
+    padding: 4px;
+    margin: 3px;
+}
+
+#post-meta{
+    color: #6E6E6E;
+    font-size:12px;
+}
+
+#post-action{
+    font-size:12px;
+}
