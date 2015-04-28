@@ -78,7 +78,7 @@ def post(request, post_slug):
 
             # Final save for parents and children
             temp.save()
-
+            form = CommentForm() # Reset the form, clean the fields. (AJAX doesn't refresh the page)
     # Retrieve all comments and sort them by path
     comment_tree = Comment.objects.filter(post=post).order_by('path')
 

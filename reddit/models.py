@@ -49,7 +49,6 @@ class Comment(models.Model):
     user = models.ForeignKey(User)
     votes = models.IntegerField(default=0)
     post = models.ForeignKey(Post, null=True, blank=True)
-    comment = models.ForeignKey("self", related_name="children_comment", null=True, blank=True)
 
     # For threaded comments
     path = IntegerArrayField(blank=True, editable=False)

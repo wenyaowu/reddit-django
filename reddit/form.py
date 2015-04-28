@@ -27,7 +27,7 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    text = forms.CharField(widget=forms.Textarea, label='')
+    text = forms.CharField(widget=forms.Textarea, label='', initial='')
     parent = forms.CharField(widget=forms.HiddenInput(attrs={'class': 'parent'}), required=False)
 
     class Meta:

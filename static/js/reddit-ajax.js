@@ -22,9 +22,16 @@ $('button[class=downvote]').click(function(){ // on clicked of the vote element
     );
 });
 
-$("#commenters").on("click", ".reply", function(event){
-    event.preventDefault();
-    var form = $("#postcomment").clone(true);
+$("#commenters").on("click", ".reply", function(event){ //Place a listener on 'ul', applies to all 'li'
+    event.preventDefault(); //Prevent default behavior of the event. (Here, prevent <a> change pages)
+    var form = $("#postcomment").clone(true); // Get and clone the form with id=postcomment
     form.find('.parent').val($(this).parent().parent().attr('id'));
-    $(this).parent().append(form);
+    //Find all the element within current selection that match the selector, which is
+    //<input class=parent...>, and set that value to id of 'li'
+    //which is also the id of the post
+    $(this).parent().append(form); //append this form with new id to <p> of the link <a class=reply>
+
+    // 'this' represent 'a' element which contains the link
+    // this.parrent().parrent() is 'li'
+    // this.parent() is 'p'
 });
