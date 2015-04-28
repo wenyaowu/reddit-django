@@ -35,3 +35,18 @@ $("#commenters").on("click", ".reply", function(event){ //Place a listener on 'u
     // this.parrent().parrent() is 'li'
     // this.parent() is 'p'
 });
+
+$('.span-shrink').on("click", function(event){
+    event.preventDefault();
+    var id = this.id
+    if (id == 'shrink'){
+    $(this).parent().next().hide()
+    $(this).text('[+]')
+    $(this).attr('id','expend')
+    }
+    if (id == 'expend'){
+    $(this).parent().next().show()
+    $(this).text('[-]')
+    $(this).attr('id','shrink')
+    }
+})
