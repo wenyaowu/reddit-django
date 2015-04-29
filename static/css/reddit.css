@@ -21,7 +21,8 @@
     list-style-type: none;
     background-color: #FAFAFA;
     padding: 4px;
-    margin: 3px;
+    margin: auto;
+    display: table;
 }
 
 #post-meta{

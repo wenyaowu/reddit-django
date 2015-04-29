@@ -29,7 +29,14 @@ $("#commenters").on("click", ".reply", function(event){ //Place a listener on 'u
     //Find all the element within current selection that match the selector, which is
     //<input class=parent...>, and set that value to id of 'li'
     //which is also the id of the post
-    $(this).parent().append(form); //append this form with new id to <p> of the link <a class=reply>
+    var boo = $(this).parent().find("#postcomment").length
+    if (boo!=0){
+        $(this).parent().find('form').remove()
+    }
+    else{
+    $(this).parent().append(form);     //append this form with new id to <p> of the link <a class=reply>
+    }
+
 
     // 'this' represent 'a' element which contains the link
     // this.parrent().parrent() is 'li'
@@ -40,12 +47,12 @@ $('.span-shrink').on("click", function(event){
     event.preventDefault();
     var id = this.id
     if (id == 'shrink'){
-    $(this).parent().next().hide()
+    $(this).parent().next('#comment-text').hide()
     $(this).text('[+]')
     $(this).attr('id','expend')
     }
     if (id == 'expend'){
-    $(this).parent().next().show()
+    $(this).parent().next('#comment-text').show()
     $(this).text('[-]')
     $(this).attr('id','shrink')
     }

@@ -63,7 +63,7 @@
             <p class="poster" id="post-meta">{{ c.user }}-{{c.pub_datetime|naturaltime}}
             <a href="" class="span-shrink" id="shrink" >[-]</a>
             </p>
-            <p>{{c.text}}</p>
+            <p id="comment-text">{{c.text}}</p>
             <p><a href="" class="reply" id="post-action">reply</a></p>
         </li>
     {% empty %}
