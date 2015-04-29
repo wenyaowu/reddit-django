@@ -29,12 +29,14 @@ $("#commenters").on("click", ".reply", function(event){ //Place a listener on 'u
     //Find all the element within current selection that match the selector, which is
     //<input class=parent...>, and set that value to id of 'li'
     //which is also the id of the post
-    var boo = $(this).parent().find("#postcomment").length
-    if (boo!=0){
+    var formExists = $(this).parent().find("#postcomment").is('form')
+    if (formExists==true){ //Comment area exists
         $(this).parent().find('form').remove()
+        $(this).text('reply')
     }
-    else{
-    $(this).parent().append(form);     //append this form with new id to <p> of the link <a class=reply>
+    else{ //Comment area doesn't exists
+        $(this).parent().append(form);     //append this form with new id to <p> of the link <a class=reply>
+        $(this).text('cancel')
     }
 
 
