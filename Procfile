@@ -1,1 +1,1 @@
-web : gunicorn reddit-django.wsgi -b 0.0.0.0:$PORT
+web : gunicorn reddit-django.wsgi --log-file -
