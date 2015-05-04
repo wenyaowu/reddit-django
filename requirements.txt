@@ -1,0 +1,4 @@
+Django==1.7.4
+django-dbarray==0.2
+django-registration==1.0
+django-registration-redux==1.1
