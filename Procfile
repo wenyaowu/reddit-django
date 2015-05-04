@@ -1,1 +1,1 @@
-web : gunicorn reddit-django.wsgi --log-file -
+web: gunicorn reddit-django.wsgi --log-file -
