@@ -1,1 +1,1 @@
-web: python app.py
+web: gunicorn reddit-django.wsgi
