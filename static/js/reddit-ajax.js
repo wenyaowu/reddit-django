@@ -38,8 +38,6 @@ $("#commenters").on("click", ".reply", function(event){ //Place a listener on 'u
         $(this).parent().append(form);     //append this form with new id to <p> of the link <a class=reply>
         $(this).text('cancel')
     }
-
-
     // 'this' represent 'a' element which contains the link
     // this.parrent().parrent() is 'li'
     // this.parent() is 'p'
