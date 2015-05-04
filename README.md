@@ -9,6 +9,6 @@
   - [DBarray](https://github.com/ecometrica/django-dbarray)
   
 ## Blog
-  - You can find the blog post of this project [here](http://)
+  - You can find the blog post of this project [here](http://104.131.153.24/blog/article/challenge1-simple-reddit-with-django/)
 
   
