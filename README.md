@@ -16,8 +16,9 @@
   - Django 1.4+
   - [Postgresql](http://postgresapp.com/) 8.x or later: You can find installation tutorial [here](http://djangogirls.gitbooks.io/django-girls-tutorial-extensions/content/optional_postgresql_installation/README.html)
   - [DBarray](https://github.com/ecometrica/django-dbarray)
+  - [**django-registration**](https://github.com/macropin/django-registration)
   
 ## Blog
-  - You can find the blog post of this project [here](http://104.131.153.24/blog/article/challenge1-simple-reddit-with-django/)
+  - You can find the blog post of this project [here](http://codershack.us/blog/article/challenge1-simple-reddit-with-django/)
 
   
