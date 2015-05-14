@@ -15,6 +15,7 @@
 ## Requirements
   - Django 1.4+
   - [**Postgresql**](http://postgresapp.com/) 8.x or later: You can find installation tutorial [here](http://djangogirls.gitbooks.io/django-girls-tutorial-extensions/content/optional_postgresql_installation/README.html)
+  - [psycopg2](http://initd.org/psycopg/)
   - [**DBarray**](https://github.com/ecometrica/django-dbarray)
   - [**django-registration**](https://github.com/macropin/django-registration)
   
